@@ -30,7 +30,7 @@ const Pagination = ({page}) => (
       const {count} = data.itemsConnection.aggregate;
       const pages = Math.ceil(count / perPage);
       return (
-        <PaginationStyles>
+        <PaginationStyles data-test="pagination">
           <Head>
             <title>Back Packzz | Page {page} of {pages}</title>
           </Head>
@@ -42,7 +42,7 @@ const Pagination = ({page}) => (
           }}>
             <a className="prev" aria-disabled={ page <= 1}>Prev</a>
           </Link>
-          <p>Page {page} of {pages}</p>
+          <p>Page {page} of <span className="totalPages">{pages}</span></p>
           <p>{count} total items</p>
           <Link
             prefetch
