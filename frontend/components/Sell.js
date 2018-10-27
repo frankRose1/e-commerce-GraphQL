@@ -34,7 +34,6 @@ class Sell extends Component {
       body: data
     });
     const file = await res.json();
-    console.log(file)
     this.setState({
       image: file.secure_url,
       largeImage: file.eager[0].secure_url
@@ -53,7 +52,10 @@ class Sell extends Component {
         mutation={CREATE_ITEM_MUTATION}
         variables={this.state}>
         {(createItem, {error, loading}) => (
-          <Form method="post" onSubmit={async e => {
+          <Form
+            data-test="sell-form"
+            method="post" 
+            onSubmit={async e => {
             e.preventDefault();
 
             const res = await createItem();

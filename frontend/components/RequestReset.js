@@ -12,7 +12,7 @@ const REQUEST_RESET_MUTATION = gql`
   }
 `;
 
-class SignIn extends Component {
+class RequestReset extends Component {
   state = {
     email: ''
   }
@@ -28,7 +28,10 @@ class SignIn extends Component {
         mutation={REQUEST_RESET_MUTATION}
         variables={this.state}>
         {(requestReset, {error, loading, called}) => (
-          <Form method="post" onSubmit={async e => {
+          <Form
+            data-test="request-reset"
+            method="post" 
+            onSubmit={async e => {
             e.preventDefault();
             //could aslo set the success messagge to state and display a pop up when this resolves
             await requestReset();
@@ -64,5 +67,5 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn;
+export default RequestReset;
 export {REQUEST_RESET_MUTATION};
