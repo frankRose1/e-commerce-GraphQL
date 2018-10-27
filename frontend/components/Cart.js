@@ -39,7 +39,9 @@ const Cart = () => {
         if (loading) return <p>Loading...</p>
         if(!me) return null //dont show the cart if user is not signed in
         return (
-          <CartStyles open={localState.data.cartOpen}>
+          <CartStyles
+            data-test="cart"
+            open={localState.data.cartOpen}>
             <header>
               <CloseButton onClick={toggleCart} title="close">&times;</CloseButton>
               <Supreme>{me.name}'s Cart</Supreme>
