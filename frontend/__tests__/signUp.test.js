@@ -81,7 +81,6 @@ describe('<SignUp />', () => {
     wrapper.update()
     wrapper.find('form[data-test="signup-form"]').simulate('submit');
     await wait(30);
-    console.log(wrapper.debug());
     //query the user out of the apollo client
     const user = await apolloClient.query({query: CURRENT_USER_QUERY });
     expect(user.data.me).toMatchObject(me);
