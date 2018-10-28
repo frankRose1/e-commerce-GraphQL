@@ -48,17 +48,17 @@ class Order extends Component {
 
           const { order } = data;
           return (
-            <OrderStyles>
+            <OrderStyles data-test="order">
               <Head>
                 <title>BackPackz - Order {order.id}</title>
               </Head>
               <p>
                 <span>Order ID:</span>
-                <span>{order.id}</span>
+                <span data-test="order-id">{order.id}</span>
               </p>
               <p>
                 <span>Charge:</span>
-                <span>{order.charge}</span>
+                <span data-test="order-charge">{order.charge}</span>
               </p>
               <p>
                 <span>Date:</span>
@@ -66,7 +66,7 @@ class Order extends Component {
               </p>
               <p>
                 <span>Order Total</span>
-                <span>{formatMoney(order.total)}</span>
+                <span data-test="order-total">{formatMoney(order.total)}</span>
               </p>
               <p>
                 <span>Item Count:</span>

@@ -5,7 +5,6 @@ import StripeCheckout from 'react-stripe-checkout';
 import NProgress from 'nprogress';
 import Router from 'next/router';
 import calcTotalPrice from '../lib/calcTotalPrice';
-import Error from './ErrorMessage';
 import User, {CURRENT_USER_QUERY} from './User'; //refetching the current user after order is placed so we can refresh the cart
 
 const CREATE_ORDER_MUTATION = gql`
@@ -30,6 +29,7 @@ class PurchaseItem extends Component {
 
   //the token ID is a one time token that will be sent to the server and allows us to charge the users card
   onToken = async ({id}, mutation) => {
+    NProgress.start();
     const res = await mutation({
       variables: { token: id }
     }).catch(err => alert(err.message));
@@ -71,3 +71,4 @@ class PurchaseItem extends Component {
 
 
 export default PurchaseItem;
+export {CREATE_ORDER_MUTATION};

@@ -71,7 +71,7 @@ describe('<AddToCart />', () => {
     expect(me.cart).toHaveLength(0);
     //simulate click and check if item is in cart
     wrapper.find('button').simulate('click');
-    await wait(25);
+    await wait(50);
     const {data: { me: me2 }} = await apolloClient.query({query: CURRENT_USER_QUERY});
     expect(me2.cart).toHaveLength(1);
     expect(me2.cart[0].id).toBe('omg123');
