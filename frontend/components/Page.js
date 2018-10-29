@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import styled, {ThemeProvider, injectGlobal} from 'styled-components';
 import Header from './Header';
 import Meta from './Meta';
-import styled, {ThemeProvider, injectGlobal} from 'styled-components';
+import Footer from './Footer';
+
 
 //styles available via props
 const theme = {
@@ -10,7 +12,7 @@ const theme = {
   grey: '#3A3A3A',
   lightgrey: '#E1E1E1',
   offWhite: '#EDEDED',
-  maxWidth: '1000px',
+  maxWidth: '1100px',
   bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)'
 };
 
@@ -21,9 +23,10 @@ const StyledPage = styled.div`
 
 //wrap the page specific content
 const Inner = styled.div`
-  max-width: ${props => props.theme.black};
+  max-width: ${props => props.theme.maxWidth};
+  color: ${props => props.theme.black};
   padding: 2rem;
-  margin: 0 auto;
+  margin: 150px auto;
 `;
 
 //reset and typography
@@ -65,6 +68,7 @@ class Page extends Component {
           <Header />
           <Meta />
           <Inner>{this.props.children}</Inner>
+          <Footer />
         </StyledPage>
       </ThemeProvider>
     );

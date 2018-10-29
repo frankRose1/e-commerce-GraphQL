@@ -18,6 +18,8 @@ const Form = styled.form`
   font-size: 1.5rem;
   line-height: 1.5;
   font-weight: 600;
+  max-width: 600px;
+  margin: 0 auto;
   h2 {
     text-align: center;
   }

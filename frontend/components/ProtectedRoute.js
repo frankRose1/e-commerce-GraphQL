@@ -11,7 +11,7 @@ const ProtectedRoute = props =>  (
       return !data.me
         ? (
             <div>
-              <p>Please sign in before continuing.</p>
+              <p style={{textAlign: 'center', fontSize: '2rem'}}>Please sign in before continuing.</p>
               <SignIn />
             </div>
           )
