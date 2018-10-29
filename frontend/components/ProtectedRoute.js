@@ -2,11 +2,12 @@ import React from 'react';
 import {Query} from 'react-apollo';
 import SignIn from './SignIn';
 import {CURRENT_USER_QUERY} from './User';
+import Loading from './Loading';
 
 const ProtectedRoute = props =>  (
   <Query query={CURRENT_USER_QUERY}>
     {({data, loading}) => {
-      if (loading) return <p>Loading...</p>
+      if (loading) return <Loading />
       return !data.me
         ? (
             <div>

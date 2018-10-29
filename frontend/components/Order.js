@@ -6,6 +6,7 @@ import gql from 'graphql-tag';
 import { format } from 'date-fns';
 import formatMoney from '../lib/formatMoney';
 import OrderStyles from './styles/OrderStyles';
+import Loading from './Loading';
 
 const SINGLE_ORDER_QUERY = gql`
   query SINGLE_ORDER_QUERY($orderId: ID!){
@@ -43,7 +44,7 @@ class Order extends Component {
         query={SINGLE_ORDER_QUERY}
         variables={{ orderId }}>
         {({data, loading, error}) => {
-          if (loading) return <p>Loading...</p>
+          if (loading) return <Loading />
           if (error) return <Error error={error} />
 
           const { order } = data;

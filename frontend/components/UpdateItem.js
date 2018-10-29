@@ -4,6 +4,7 @@ import Router from 'next/router';
 import gql from 'graphql-tag';
 import Form from './styles/Form';
 import Error from './ErrorMessage';
+import Loading from './Loading';
 
 const SINGLE_ITEM_QUERY = gql`
   query SINGLE_ITEM_QUERY($id: ID!){
@@ -57,7 +58,7 @@ class UpdateItem extends Component {
           id: this.props.id
         }}>
           {({data, loading}) => {
-            if (loading) return <p>LOADING...</p>
+            if (loading) return <Loading />
             if (!data.item) return <p>No item found with the ID {this.props.id}</p>
             return (
               <Mutation 

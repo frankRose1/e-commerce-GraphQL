@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import Error from './ErrorMessage';
 import Table from './styles/Table';
 import UserPermissions from './UserPermissions';
+import Loading from './Loading';
 
 const possiblePermissions = [
   'ADMIN',
@@ -27,7 +28,9 @@ const ALL_USERS_QUERY = gql`
 
 const Permissions = () => (
   <Query query={ALL_USERS_QUERY}>
-    {({data, loading, error}) => (
+    {({data, loading, error}) => {
+    if (loading) return <Loading />
+    return (
       <div>
         <Error error={error}/>
         <div>
@@ -54,7 +57,7 @@ const Permissions = () => (
           </Table>
         </div>
       </div>
-    )}
+    )}}
   </Query>
 );
 

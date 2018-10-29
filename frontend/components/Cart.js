@@ -9,6 +9,7 @@ import Supreme from './styles/Supreme';
 import CloseButton from './styles/CloseButton';
 import Button from './styles/SickButton';
 import PurchaseItem from './PurchaseItem';
+import Loading from './Loading';
 import calcTotalPrice from '../lib/calcTotalPrice';
 import formatMoney from '../lib/formatMoney';
 
@@ -36,7 +37,7 @@ const Cart = () => {
     <Composed>
       {( {user, toggleCart, localState} ) => {
         const {data: {me}, loading} = user;
-        if (loading) return <p>Loading...</p>
+        if (loading) return <Loading />
         if(!me) return null //dont show the cart if user is not signed in
         return (
           <CartStyles

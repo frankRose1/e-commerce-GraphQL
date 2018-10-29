@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import formatMoney from '../lib/formatMoney';
 import Error from './ErrorMessage';
+import Loading from './Loading';
 
 const OrdersGrid = styled.ul`
   display: grid;
@@ -37,7 +38,7 @@ class Account extends Component {
       <Query query={USER_ORDERS_QUERY}>
         {({data, loading, error}) => {
           const {userOrders} = data;
-          if (loading) return <p>Loading...</p>
+          if (loading) return <Loading />
           if(error) return <Error error={error} />
           if (!userOrders.length) return <p>Looks like you havn't ordered anything yet!</p>
           

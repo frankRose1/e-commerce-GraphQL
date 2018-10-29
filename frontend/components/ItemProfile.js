@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 import styled from 'styled-components';
 import Error from './ErrorMessage';
+import Loading from './Loading';
 
 const SingleItemStyles = styled.div`
   max-width: 1200px;
@@ -64,7 +65,7 @@ class ItemProfile extends Component {
         }}>
         { ( {data, error, loading} ) => {
           const {item} = data;
-          if(loading) return <p>Loading...</p>
+          if(loading) return <Loading />
           if(error) return <Error error={error}/>
           if(!item) return <p>No item found!</p>
           
