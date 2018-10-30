@@ -7,21 +7,21 @@ const Footer = () => (
     <FooterLogo>BackPackzz</FooterLogo>
     <div className="footer-cols">
       <div>
-        <h3>Around The Web</h3>
+        <h4>Around The Web</h4>
         <ul>
           <li>
-            <a href="https://www.facebook.com/" target="_blank"> <i class="fab fa-facebook-f"></i> facebook</a>
+            <a href="https://www.facebook.com/" target="_blank"> <i className="fab fa-facebook-f"></i> facebook</a>
           </li>
           <li>
-            <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i> instagram</a>
+            <a href="https://www.instagram.com/" target="_blank"><i className="fab fa-instagram"></i> instagram</a>
           </li>
           <li>
-            <a href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter"></i> twitter</a>
+            <a href="https://www.twitter.com/" target="_blank"><i className="fab fa-twitter"></i> twitter</a>
           </li>
         </ul>
       </div>
       <div>
-        <h3>Company</h3>
+        <h4>Company</h4>
         <ul>
           <li>
             <Link href="/">
@@ -46,7 +46,7 @@ const Footer = () => (
         </ul>
       </div>
       <div>
-        <h3>NewsLetter</h3>
+        <h4>NewsLetter</h4>
         <p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals!(psst! this is just a placeholder!)</p>
         <div className="subscribe">
           <input type="email" placeholder="your-email@example.com"/>

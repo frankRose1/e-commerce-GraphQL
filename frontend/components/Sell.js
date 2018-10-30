@@ -4,6 +4,7 @@ import Router from 'next/router';
 import gql from 'graphql-tag';
 import Form from './styles/Form';
 import Error from './ErrorMessage';
+import SubTitle from './styles/SubTitleStyles';
 
 
 const CREATE_ITEM_MUTATION = gql`
@@ -52,81 +53,84 @@ class Sell extends Component {
         mutation={CREATE_ITEM_MUTATION}
         variables={this.state}>
         {(createItem, {error, loading}) => (
-          <Form
-            data-test="sell-form"
-            method="post" 
-            onSubmit={async e => {
-            e.preventDefault();
+          <>
+            <SubTitle>List an Item For Sale</SubTitle>
+            <Form
+              data-test="sell-form"
+              method="post" 
+              onSubmit={async e => {
+              e.preventDefault();
 
-            const res = await createItem();
-            this.setState({
-              title: '',
-              description: '',
-              image: '',
-              largeImage: '',
-              price: 0
-            });
+              const res = await createItem();
+              this.setState({
+                title: '',
+                description: '',
+                image: '',
+                largeImage: '',
+                price: 0
+              });
+              
+              Router.push({
+                pathname: '/item',
+                query: { id: res.data.createItem.id }
+              });
+            }}>
             
-            Router.push({
-              pathname: '/item',
-              query: { id: res.data.createItem.id }
-            });
-          }}>
-          
-            <fieldset disabled={loading} aria-busy={loading}>
-            <Error error={error}/>
-            <label htmlFor="file">
-                Image
-                <input 
-                  type="file" 
-                  id="file"
-                  name="file"
-                  placeholder="Add an image"
-                  onChange={this.uploadFile}
-                  required/>
-                  {this.state.image && <img width="200" src={this.state.image} al="Upload Preview" />}
-              </label>
+              <fieldset disabled={loading} aria-busy={loading}>
+              <Error error={error}/>
+              <label htmlFor="file">
+                  Image
+                  <input 
+                    type="file" 
+                    id="file"
+                    name="file"
+                    placeholder="Add an image"
+                    onChange={this.uploadFile}
+                    required/>
+                    {this.state.image && <img width="200" src={this.state.image} al="Upload Preview" />}
+                </label>
 
-              <label htmlFor="title">
-                Title
-                <input 
-                  type="text" 
-                  id="title"
-                  name="title"
-                  placeholder="Title"
-                  value={this.state.title}
-                  onChange={this.handleInputChange}
-                  required/>
-              </label>
+                <label htmlFor="title">
+                  Title
+                  <input 
+                    type="text" 
+                    id="title"
+                    name="title"
+                    placeholder="Title"
+                    value={this.state.title}
+                    onChange={this.handleInputChange}
+                    required/>
+                </label>
 
-              <label htmlFor="price">
-                Price
-                <input 
-                  type="number" 
-                  id="price"
-                  name="price"
-                  placeholder="Price"
-                  value={this.state.price}
-                  onChange={this.handleInputChange}
-                  required/>
-              </label>
+                <label htmlFor="price">
+                  Price
+                  <input 
+                    type="number" 
+                    id="price"
+                    name="price"
+                    placeholder="Price"
+                    value={this.state.price}
+                    onChange={this.handleInputChange}
+                    required/>
+                </label>
 
-              <label htmlFor="description">
-                Description
-                <textarea 
-                  type="text" 
-                  id="description"
-                  name="description"
-                  placeholder="Enter a description"
-                  value={this.state.description}
-                  onChange={this.handleInputChange}
-                  required/>
-              </label>
+                <label htmlFor="description">
+                  Description
+                  <textarea 
+                    type="text" 
+                    id="description"
+                    name="description"
+                    placeholder="Enter a description"
+                    value={this.state.description}
+                    onChange={this.handleInputChange}
+                    required/>
+                </label>
 
-              <button type="submit">Creat{loading ? 'ing' : 'e'} Item!</button>
+                <button type="submit">Creat{loading ? 'ing' : 'e'} Item!</button>
 
-            </fieldset>
-          </Form>
+              </fieldset>
+            </Form>
+          </>
         )}
       </Mutation>
     );

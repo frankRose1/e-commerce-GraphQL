@@ -26,17 +26,12 @@ const OrderItemStyles = styled.li`
   .order-meta {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
-    display: grid;
     grid-gap: 1rem;
     text-align: center;
     & > * {
       margin: 0;
       background: rgba(0, 0, 0, 0.03);
       padding: 1rem 0;
-    }
-    strong {
-      display: block;
-      margin-bottom: 1rem;
     }
   }
 `;

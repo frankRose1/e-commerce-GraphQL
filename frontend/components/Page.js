@@ -17,11 +17,10 @@ const theme = {
 };
 
 const StyledPage = styled.div`
-  color: ${props => props.theme.maxWidth};
+  color: ${props => props.theme.black};
   background: #fff;
 `;
 
-//wrap the page specific content
 const Inner = styled.div`
   max-width: ${props => props.theme.maxWidth};
   color: ${props => props.theme.black};
@@ -50,6 +49,7 @@ injectGlobal`
     font-size: 1.5rem;
     line-height:2;
     font-family: 'radnika_next';
+    overflow: scroll;
   }
   a {
     text-decoration: none;
@@ -67,7 +67,7 @@ class Page extends Component {
         <StyledPage>
           <Header />
           <Meta />
-          <Inner>{this.props.children}</Inner>
+            <Inner>{this.props.children}</Inner>
           <Footer />
         </StyledPage>
       </ThemeProvider>

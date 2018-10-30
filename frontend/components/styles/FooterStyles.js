@@ -29,7 +29,7 @@ const FooterStyles = styled.footer`
       input[type="submit"]{
         position: absolute;
         right: 1.5px;
-        top: 2.2px;
+        top: 2.3px;
         z-index: 2;
         color: white;
         background-color: #003366;
@@ -38,10 +38,10 @@ const FooterStyles = styled.footer`
         font-family: inherit;
       }
     }
-    h3 {
+    h4 {
       text-transform: uppercase;
-      margin: 0 auto;
-      &:after{
+      text-align: center;
+      &:after {
         content: "";
         height: 1px;
         background-color: white;

@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Item from './Item';
 import Pagination from './Pagination';
 import {perPage} from '../config';
+import SubTitle from './styles/SubTitleStyles';
 import Loading from './Loading';
 
 const ALL_ITEMS_QUERY = gql`
@@ -37,6 +38,7 @@ class Items extends Component {
     const {page} = this.props;
     return (
       <Center>
+        <SubTitle>Shop</SubTitle>
         <Pagination page={page} />
         <Query 
           query={ALL_ITEMS_QUERY}
@@ -54,7 +56,7 @@ class Items extends Component {
                   key={item.id}
                   item={item} />
               ))}
-            </ItemsList>
+          </ItemsList>
           )
         }}
       </Query>

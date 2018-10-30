@@ -5,8 +5,10 @@ import {formatDistance} from 'date-fns';
 import styled from 'styled-components';
 import Link from 'next/link';
 import formatMoney from '../lib/formatMoney';
+import OrderItem from './styles/OrderItemStyles';
 import Error from './ErrorMessage';
 import Loading from './Loading';
+import SubTitle from './styles/SubTitleStyles';
 
 const OrdersGrid = styled.ul`
   display: grid;
@@ -44,10 +46,11 @@ class Account extends Component {
           
           return (
             <div>
+              <SubTitle>Your Account</SubTitle>
               <h2>You have {userOrders.length} order{userOrders.length === 1 ? '' : 's'}</h2>
               <OrdersGrid>
                 {userOrders.map(order => (
-                  <li key={order.id}>
+                  <OrderItem key={order.id}>
                     <Link href={{
                       pathname: '/order',
                       query: { orderId: order.id }
@@ -69,7 +72,7 @@ class Account extends Component {
                         </div>
                       </a>
                     </Link>
-                  </li>
+                  </OrderItem>
                 ))}
             </OrdersGrid>
             </div>

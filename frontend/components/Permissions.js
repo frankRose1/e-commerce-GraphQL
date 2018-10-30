@@ -5,6 +5,7 @@ import Error from './ErrorMessage';
 import Table from './styles/Table';
 import UserPermissions from './UserPermissions';
 import Loading from './Loading';
+import SubTitle from './styles/SubTitleStyles';
 
 const possiblePermissions = [
   'ADMIN',
@@ -32,9 +33,9 @@ const Permissions = () => (
     if (loading) return <Loading />
     return (
       <div>
+        <SubTitle>Manage Permissions</SubTitle>
         <Error error={error}/>
         <div>
-          <h2>Manage Permissions</h2>
           <Table>
             <thead>
               <tr>

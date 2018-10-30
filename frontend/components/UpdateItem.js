@@ -5,6 +5,7 @@ import gql from 'graphql-tag';
 import Form from './styles/Form';
 import Error from './ErrorMessage';
 import Loading from './Loading';
+import SubTitle from './styles/SubTitleStyles';
 
 const SINGLE_ITEM_QUERY = gql`
   query SINGLE_ITEM_QUERY($id: ID!){
@@ -65,50 +66,53 @@ class UpdateItem extends Component {
                 mutation={UPDATE_ITEM_MUTATION}
                 variables={this.state}>
                 {(updateItem, {error, loading}) => (
-                  <Form method="post" onSubmit={e => this.handleSubmit(e, updateItem)}>
-                    <Error error={error}/>
-                    <fieldset disabled={loading} aria-busy={loading}>
+                  <>
+                    <SubTitle>Update Item</SubTitle>
+                    <Form method="post" onSubmit={e => this.handleSubmit(e, updateItem)}>
+                      <Error error={error}/>
+                      <fieldset disabled={loading} aria-busy={loading}>
 
-                      <label htmlFor="title">
-                        Title
-                        <input 
-                          type="text" 
-                          id="title"
-                          name="title"
-                          placeholder="Title"
-                          defaultValue={data.item.title}
-                          onChange={this.handleInputChange}
-                          required/>
-                      </label>
+                        <label htmlFor="title">
+                          Title
+                          <input 
+                            type="text" 
+                            id="title"
+                            name="title"
+                            placeholder="Title"
+                            defaultValue={data.item.title}
+                            onChange={this.handleInputChange}
+                            required/>
+                        </label>
 
-                      <label htmlFor="price">
-                        Price
-                        <input 
-                          type="number" 
-                          id="price"
-                          name="price"
-                          placeholder="Price"
-                          defaultValue={data.item.price}
-                          onChange={this.handleInputChange}
-                          required/>
-                      </label>
+                        <label htmlFor="price">
+                          Price
+                          <input 
+                            type="number" 
+                            id="price"
+                            name="price"
+                            placeholder="Price"
+                            defaultValue={data.item.price}
+                            onChange={this.handleInputChange}
+                            required/>
+                        </label>
 
-                      <label htmlFor="description">
-                        Description
-                        <textarea 
-                          type="text" 
-                          id="description"
-                          name="description"
-                          placeholder="Enter a description"
-                          defaultValue={data.item.description}
-                          onChange={this.handleInputChange}
-                          required/>
-                      </label>
+                        <label htmlFor="description">
+                          Description
+                          <textarea 
+                            type="text" 
+                            id="description"
+                            name="description"
+                            placeholder="Enter a description"
+                            defaultValue={data.item.description}
+                            onChange={this.handleInputChange}
+                            required/>
+                        </label>
 
-                      <button type="submit">Sav{loading ? 'ing' : 'e'} Changes</button>
+                        <button type="submit">Sav{loading ? 'ing' : 'e'} Changes</button>
 
-                    </fieldset>
-                  </Form>
+                      </fieldset>
+                    </Form>
+                  </>
                 )}
               </Mutation>
             )
