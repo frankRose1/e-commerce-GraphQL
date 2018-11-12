@@ -7,7 +7,7 @@
     "dev": "next -p 7777",
     "build": "next build",
     "start": "next start",
-    "test": "SET NODE_ENV=test&& jest --watch",
+    "test": "SET NODE_ENV=test&& jest --updateSnapshot",
     "heroku-postbuild": "next build"
   },
   "author": "",
