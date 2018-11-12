@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorMessage /> renders and matches the snapshot 1`] = `
+<ErrorMessage__ErrorStyles>
+  <p
+    data-test="graphql-error"
+  >
+    <strong>
+      Shoot!
+    </strong>
+    This is a test error
+  </p>
+</ErrorMessage__ErrorStyles>
+`;
