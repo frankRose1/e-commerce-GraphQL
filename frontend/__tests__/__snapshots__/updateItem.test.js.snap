@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<UpdateItem /> renders and matches the snapshot 1`] = `
+<form
+  className="Form-sc-14226r0-0 elgkvZ"
+  data-test="update-item"
+  method="post"
+  onSubmit={[Function]}
+>
+  <DisplayError
+    error={Object {}}
+  />
+  <fieldset
+    aria-busy={false}
+    disabled={false}
+  >
+    <label
+      htmlFor="title"
+    >
+      Title
+      <input
+        defaultValue="dogs are best"
+        id="title"
+        name="title"
+        onChange={[Function]}
+        placeholder="Title"
+        required={true}
+        type="text"
+      />
+    </label>
+    <label
+      htmlFor="price"
+    >
+      Price
+      <input
+        defaultValue={5000}
+        id="price"
+        name="price"
+        onChange={[Function]}
+        placeholder="Price"
+        required={true}
+        type="number"
+      />
+    </label>
+    <label
+      htmlFor="description"
+    >
+      Description
+      <textarea
+        defaultValue="dogs"
+        id="description"
+        name="description"
+        onChange={[Function]}
+        placeholder="Enter a description"
+        required={true}
+        type="text"
+      />
+    </label>
+    <button
+      type="submit"
+    >
+      Sav
+      e
+       Changes
+    </button>
+  </fieldset>
+</form>
+`;

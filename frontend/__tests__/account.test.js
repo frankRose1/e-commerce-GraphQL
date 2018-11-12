@@ -4,7 +4,6 @@ import toJSON from 'enzyme-to-json';
 import wait from 'waait';
 import Account, { USER_ORDERS_QUERY } from '../components/Account';
 import { fakeOrder } from '../lib/testUtils';
-import formatMoney from '../lib/formatMoney';
 
 const mocks = [
   {
@@ -48,6 +47,19 @@ describe('<Account />', () => {
     await wait();
     wrapper.update();
     expect(toJSON(wrapper.find('div[data-test="account"]'))).toMatchSnapshot();
+  });
+
+  it('displays order information', async () => {
+    const wrapper = mount(
+      <MockedProvider mocks={mocks}>
+        <Account />
+      </MockedProvider>
+    );
+    await wait();
+    wrapper.update();
+    expect(wrapper.find('div[data-test="account"] h2').text()).toContain(
+      '3 orders'
+    );
   });
 
   it('renders a message when a user has no orders', async () => {
