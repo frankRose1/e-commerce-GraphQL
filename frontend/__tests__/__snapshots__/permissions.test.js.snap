@@ -227,21 +227,15 @@ exports[`<Permissions /> renders and matches the snapshot 1`] = `
             ],
             "kind": "Document",
             "loc": Object {
-              "end": 215,
+              "end": 227,
               "start": 0,
             },
           }
         }
-        variables={
-          Object {
-            "permissions": Array [
-              "ADMIN",
-            ],
-            "userId": "4234",
-          }
-        }
       >
-        <tr>
+        <tr
+          data-test="permissions-row"
+        >
           <td>
             Miss Coleman Berge
           </td>
@@ -346,12 +340,14 @@ exports[`<Permissions /> renders and matches the snapshot 1`] = `
           </td>
           <td>
             <SickButton
+              data-test="update-button"
               disabled={false}
               onClick={[Function]}
               type="button"
             >
               <button
                 className="SickButton-epeo8a-0 hDvtOo"
+                data-test="update-button"
                 disabled={false}
                 onClick={[Function]}
                 type="button"
@@ -542,21 +538,15 @@ exports[`<Permissions /> renders and matches the snapshot 1`] = `
             ],
             "kind": "Document",
             "loc": Object {
-              "end": 215,
+              "end": 227,
               "start": 0,
             },
           }
         }
-        variables={
-          Object {
-            "permissions": Array [
-              "USER",
-            ],
-            "userId": "5467",
-          }
-        }
       >
-        <tr>
+        <tr
+          data-test="permissions-row"
+        >
           <td>
             Ms. Nigel Russel
           </td>
@@ -661,12 +651,14 @@ exports[`<Permissions /> renders and matches the snapshot 1`] = `
           </td>
           <td>
             <SickButton
+              data-test="update-button"
               disabled={false}
               onClick={[Function]}
               type="button"
             >
               <button
                 className="SickButton-epeo8a-0 hDvtOo"
+                data-test="update-button"
                 disabled={false}
                 onClick={[Function]}
                 type="button"
