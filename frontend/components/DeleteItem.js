@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
-import {Mutation} from 'react-apollo';
+import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import PropTypes from 'prop-types';
-import {ALL_ITEMS_QUERY} from './Items';
+import { ALL_ITEMS_QUERY } from './Items';
 import ErrorPopup from './ErrorPopup';
 
 const DELETE_ITEM_MUTATION = gql`
-  mutation DELETE_ITEM_MUTATION($id: ID!){
-    deleteItem(id: $id){
+  mutation DELETE_ITEM_MUTATION($id: ID!) {
+    deleteItem(id: $id) {
       id
     }
   }
 `;
 
 class DeleteItem extends Component {
-
   static propTypes = {
     id: PropTypes.string.isRequired
   };
@@ -24,10 +23,12 @@ class DeleteItem extends Component {
     //read the cache for the items. we need to do this wit the query used to fetch the items in the first place
     const data = cache.readQuery({ query: ALL_ITEMS_QUERY });
     // remove the deleted ID from cache
-    data.items = data.items.filter(item => item.id !== payload.data.deleteItem.id);
+    data.items = data.items.filter(
+      item => item.id !== payload.data.deleteItem.id
+    );
     //put the items back
-    cache.writeQuery({query: ALL_ITEMS_QUERY, data});
-  }
+    cache.writeQuery({ query: ALL_ITEMS_QUERY, data });
+  };
 
   render() {
     return (
@@ -36,16 +37,18 @@ class DeleteItem extends Component {
         variables={{
           id: this.props.id
         }}
-        update={this.updateCache}>
-        {(deleteItem, {error, loading}) => (
+        update={this.updateCache}
+      >
+        {(deleteItem, { error, loading }) => (
           <button
-          disabled={loading}
-          onClick={() => {
-            if (confirm('Are you sure you want to delete this item?')){
-              deleteItem()
-                .catch(err =>  <ErrorPopup error={err.message}/> );
-            }
-          }}>
+            data-test='delete-item'
+            disabled={loading}
+            onClick={() => {
+              if (confirm('Are you sure you want to delete this item?')) {
+                deleteItem().catch(err => <ErrorPopup error={err.message} />);
+              }
+            }}
+          >
             Delete This Item
           </button>
         )}
@@ -54,6 +57,5 @@ class DeleteItem extends Component {
   }
 }
 
-
-
 export default DeleteItem;
+export { DELETE_ITEM_MUTATION };

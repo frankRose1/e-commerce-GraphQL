@@ -50,7 +50,7 @@ class Items extends Component {
           if (error) return <p>Error: {error.message}</p>
 
           return (
-            <ItemsList>
+            <ItemsList data-test="all-items">
               {data.items.map(item => (
                 <Item
                   key={item.id}

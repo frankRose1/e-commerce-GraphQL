@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DeleteItem /> renders and matches the snapshot 1`] = `
+<button
+  data-test="delete-item"
+  disabled={false}
+  onClick={[Function]}
+>
+  Delete This Item
+</button>
+`;
