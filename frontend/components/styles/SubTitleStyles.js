@@ -8,9 +8,9 @@ const SubTitleStyles = styled.h4`
   opacity: 0.75;
   font-size: 2.7rem;
   text-align: center;
-  &:after{
-    content: "";
-    margin: 10px auto 25px auto;
+  &:after {
+    content: '';
+    margin: 5px auto 15px auto;
     display: block;
     width: 35px;
     height: 3px;

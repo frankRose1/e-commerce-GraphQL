@@ -3,7 +3,6 @@ import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import PropTypes from 'prop-types';
 import { ALL_ITEMS_QUERY } from './Items';
-import ErrorPopup from './ErrorPopup';
 
 const DELETE_ITEM_MUTATION = gql`
   mutation DELETE_ITEM_MUTATION($id: ID!) {
@@ -45,7 +44,10 @@ class DeleteItem extends Component {
             disabled={loading}
             onClick={() => {
               if (confirm('Are you sure you want to delete this item?')) {
-                deleteItem().catch(err => <ErrorPopup error={err.message} />);
+                deleteItem().catch(err => {
+                  const message = err.message.replace('GraphQL error: ', '');
+                  alert(message);
+                });
               }
             }}
           >

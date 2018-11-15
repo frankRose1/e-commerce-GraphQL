@@ -5,8 +5,6 @@ import gql from 'graphql-tag';
 import PropTypes from 'prop-types';
 import { CURRENT_USER_QUERY } from './User';
 
-//TODO: remove alerts for a popup here, and on delete item button
-
 const BigButton = styled.button`
   font-size: 5rem;
   padding: 1.5rem;
@@ -15,21 +13,20 @@ const BigButton = styled.button`
   outline: none;
   transition: color 0.4s ease-in-out;
   cursor: pointer;
-  &:hover{
-    color: ${props => props.theme.red}
+  &:hover {
+    color: ${props => props.theme.red};
   }
 `;
 
 const REMOVE_FROM_CART_MUTATION = gql`
-  mutation REMOVE_CART_ITEM_MUTATION($cartItemId: ID!){
-    removeFromCart(cartItemId: $cartItemId){
+  mutation REMOVE_CART_ITEM_MUTATION($cartItemId: ID!) {
+    removeFromCart(cartItemId: $cartItemId) {
       id
     }
   }
 `;
 
 class RemoveFromCart extends Component {
-
   //When an item is removed, delete it from the cache as it takes a second to display in the UI when fetching to the DB
   //this is called after a response is recieved from the server after running a mutation
   //payload is the data requested in the mutation (only asked for cart item ID)
@@ -39,14 +36,14 @@ class RemoveFromCart extends Component {
     });
     const id = payload.data.removeFromCart.id;
     data.me.cart = data.me.cart.filter(item => item.id !== id);
-    cache.writeQuery({query: CURRENT_USER_QUERY, data});
-  }
+    cache.writeQuery({ query: CURRENT_USER_QUERY, data });
+  };
 
   render() {
-    const {cartItemId} = this.props;
+    const { cartItemId } = this.props;
     //the optmistic repsonse will run immediately so that the UI can be updated quicker, while in the background the item is still being removed in the DB
     return (
-      <Mutation 
+      <Mutation
         mutation={REMOVE_FROM_CART_MUTATION}
         variables={{ cartItemId }}
         update={this.updateCache}
@@ -56,15 +53,20 @@ class RemoveFromCart extends Component {
             __typename: 'CartItem',
             id: cartItemId
           }
-        }}>
-        {(removeFromCart, {error, loading}) => (
+        }}
+      >
+        {(removeFromCart, { error, loading }) => (
           <BigButton
             disabled={loading}
-            title="Remove Item"
+            title='Remove Item'
             onClick={() => {
-              removeFromCart().catch(err => alert(err.message));
-            }}>
-              &times;
+              removeFromCart().catch(err => {
+                const message = err.message.replace('GraphQL error: ', '');
+                alert(message);
+              });
+            }}
+          >
+            &times;
           </BigButton>
         )}
       </Mutation>
@@ -74,7 +76,7 @@ class RemoveFromCart extends Component {
 
 RemoveFromCart.propTypes = {
   cartItemId: PropTypes.string.isRequired
-}
+};
 
 export default RemoveFromCart;
 export { REMOVE_FROM_CART_MUTATION };

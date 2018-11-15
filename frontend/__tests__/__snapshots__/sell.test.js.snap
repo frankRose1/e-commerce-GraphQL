@@ -2,7 +2,7 @@
 
 exports[`<Sell /> renders and matches snapshot 1`] = `
 <form
-  className="Form-sc-14226r0-0 elgkvZ"
+  className="Form-sc-14226r0-0 iyeUlE"
   data-test="sell-form"
   method="post"
   onSubmit={[Function]}

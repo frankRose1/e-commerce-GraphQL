@@ -77,7 +77,7 @@ class UpdateItem extends Component {
             <Mutation mutation={UPDATE_ITEM_MUTATION} variables={this.state}>
               {(updateItem, { error, loading }) => (
                 <>
-                  <SubTitle>Update Item</SubTitle>
+                  <SubTitle>Update Item: {data.item.title}</SubTitle>
                   <Form
                     data-test='update-item'
                     method='post'

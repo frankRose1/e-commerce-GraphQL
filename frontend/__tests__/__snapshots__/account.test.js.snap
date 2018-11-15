@@ -6,7 +6,7 @@ exports[`<Account /> renders and matches the snapshot 1`] = `
 >
   <SubTitleStyles>
     <h4
-      className="SubTitleStyles-jg7g5q-0 dODtve"
+      className="SubTitleStyles-jg7g5q-0 hcEvTN"
     >
       Your Account
     </h4>
